@@ -98,7 +98,8 @@ public class BowlingGameCalculatorTestMikolajImpl {
 		assertEquals(58, calc.score());
 	}
 	@Test
-	public void shouldReturnTrueFor101010101010101010101010() { // last round strike = 2 bonus balls at the end
+	public void shouldReturnTrueFor101010101010101010101010() { // last round strike
+										//= 2 bonus balls at the end
 		for (int i = 0; i < 12; i++)
 			calc.roll(10);
 		assertTrue(calc.isFinished());
@@ -135,7 +136,8 @@ public class BowlingGameCalculatorTestMikolajImpl {
 		assertTrue(calc.isFinished());
 	}
 	@Test
-	public void shouldReturnTrueFor10101010101010101010101022() { // all strikes, more rolls than should be in whole game
+	public void shouldReturnTrueFor10101010101010101010101022() { // all strikes,
+											//more rolls than should be in whole game
 		initCalc(new ArrayList<Integer>(Arrays.asList(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 2)));
 		assertTrue(calc.isFinished());
 	}

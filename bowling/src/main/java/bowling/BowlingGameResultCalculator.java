@@ -17,7 +17,6 @@ public interface BowlingGameResultCalculator {
 	 * @return true if a game is over, otherwise false
 	 */
 	public boolean isFinished();
-	public void prtGame();
-	
+	public void prtGame();	
 }
 	

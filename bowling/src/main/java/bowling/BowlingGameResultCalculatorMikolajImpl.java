@@ -8,7 +8,8 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 
 	@Override
 	public void roll(int numberOfPins) { // filling game with roll data
-		addRollToGame(new Roll(numberOfPins)); // create new round or add roll to old round or new one in function getRound()
+		addRollToGame(new Roll(numberOfPins)); // create new round or add roll to old round
+												//or new one in function getRound()
 	}
 	@Override
 	public int score() { // evaluating game score
@@ -20,6 +21,7 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 		}
 		return score;
 	}
+	@Override
 	public void prtGame() {
 		for(Round round : mRounds) {
 			for(Roll roll : round) {
@@ -35,9 +37,9 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 	private int spareBonus(Round round, Roll roll) {
 		if (ifSecondRoundOrHigher(round) && ifEarlierRoundHadSpare(round)
 				&& ifFirstRollInRound(round, roll)) // add spare bonus only for
-													// the first roll in the
-													// next round, and start
-													// from second round
+									// the first roll in the
+									// next round, and start
+									// from second round
 			return roll.get();
 		return 0;
 	}
@@ -62,7 +64,8 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 	}
     private Round getRound() {
     	Round lastRound = Iterables.getLast(mRounds, null);
-    	if(lastRound == null || lastRound.isOver()) { // if last round is over or it is the first round create and return new round
+    	if(lastRound == null || lastRound.isOver()) { // if last round is over or it is the first 
+    													//round create and return new round
     		Round newRound = new Round();
     		mRounds.add(newRound);
     		return newRound;
@@ -71,10 +74,12 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
     }
 	private void addBonusesToLastRoundOfGame(Roll roll) {
 		Round lastRound = Iterables.getLast(mRounds);
-		if((lastRound.ifStrike() && alreadyCountedBonuses(lastRound)) || (lastRound.ifSpare() && alreadyCountedBonuses(lastRound)))
+		if((lastRound.ifStrike() && alreadyCountedBonuses(lastRound)) 
+				|| (lastRound.ifSpare() && alreadyCountedBonuses(lastRound)))
 			lastRound.add(roll); // if last round has strike or spare and player still have bonus throws to use
 	}
-	private boolean alreadyCountedBonuses(Round lastRound) { // if the size of last round is 3 it means we've already counted bonuses
+	private boolean alreadyCountedBonuses(Round lastRound) { // if the size of last round is 3 it means
+														//we've already counted bonuses
 		return lastRound.getSize() < 4;
 	}
 	private boolean ifSecondRoundOrHigher(Round round) {

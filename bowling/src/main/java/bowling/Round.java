@@ -26,13 +26,15 @@ public class Round implements Iterable<Roll> {
     	return mRolls.size();
     }
 	public boolean ifStrike() {
-		return ifOneRollInRound() && mRolls.get(0).get() == 10; // if there is no roll or more than one roll in round it can't be a strike
+		return ifOneRollInRound() && mRolls.get(0).get() == 10; // if there is no roll or more 
+											//than one roll in round it can't be a strike
 	}
 	public int indexOf(Roll roll) {
 		return mRolls.indexOf(roll);		
 	}
 	public boolean ifSpare() {
-		return (ifTwoRollsInRound() && getRollVal(0) + getRollVal(1) == 10);  // if there are no two rolls in round there can't be a spare, go this check to avoid out of bounds in next condition
+		return (ifTwoRollsInRound() && getRollVal(0) + getRollVal(1) == 10);  // if there are no two rolls in 
+									//round there can't be a spare, go this check to avoid out of bounds in next condition
 	}
 	public boolean isOver() {
 		return ifStrike() || ifTwoRollsInRound();
