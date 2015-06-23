@@ -8,8 +8,8 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 
 	@Override
 	public void roll(int numberOfPins) { // filling game with roll data
-		addRollToGame(new Roll(numberOfPins)); // create new round or add roll to old round
-												//or new one in function getRound()
+		addRollToGame(new Roll(numberOfPins)); /* create new round or add roll to old round
+											or new one in function getRound() */
 	}
 	@Override
 	public int score() { // evaluating game score
@@ -78,8 +78,8 @@ public class BowlingGameResultCalculatorMikolajImpl implements BowlingGameResult
 				|| (lastRound.ifSpare() && alreadyCountedBonuses(lastRound)))
 			lastRound.add(roll); // if last round has strike or spare and player still have bonus throws to use
 	}
-	private boolean alreadyCountedBonuses(Round lastRound) { // if the size of last round is 3 it means
-														//we've already counted bonuses
+	private boolean alreadyCountedBonuses(Round lastRound) { /* if the size of last round is 3 it means
+														we've already counted bonuses*/
 		return lastRound.getSize() < 4;
 	}
 	private boolean ifSecondRoundOrHigher(Round round) {
